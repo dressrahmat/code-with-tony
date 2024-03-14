@@ -1,4 +1,11 @@
 <div class="max-w-md mx-auto mt-5">
+    <div>
+        @if (session('success'))
+            <div class="py-2 bg-green-400 px-3">
+                <p class="text-white">{{ session('success') }}</p>            
+            </div>
+        @endif
+    </div>
     <form wire:submit="save">
         <!-- Title -->
         <div class="mb-3">
@@ -20,8 +27,10 @@
 
         <!-- Description -->
         <div class="mb-3">
-            <label for="form.description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-            <textarea type="text" wire:model="form.description" id="form.description" class="w-full rounded-md" rows="3"></textarea>
+            <label for="form.description"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+            <textarea type="text" wire:model="form.description" id="form.description" class="w-full rounded-md"
+                rows="3"></textarea>
             <div>
                 @error('form.description') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
@@ -30,7 +39,8 @@
         <!-- Status -->
         <div class="mb-3">
             <label for="form.status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-            <select wire:model="form.status" id="form.status" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500">
+            <select wire:model="form.status" id="form.status"
+                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500">
                 @foreach (\App\Enums\StatusType::cases() as $status)
                 <option value="{{ $status->value }}">{{ $status->name }}</option>
                 @endforeach
@@ -42,8 +52,10 @@
 
         <!-- Priority -->
         <div class="mb-3">
-            <label for="form.priority" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Priority</label>
-            <select wire:model="form.priority" id="form.priority" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500">
+            <label for="form.priority"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Priority</label>
+            <select wire:model="form.priority" id="form.priority"
+                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500">
                 @foreach (\App\Enums\PriorityType::cases() as $priority)
                 <option value="{{ $priority->value }}">{{ $priority->name }}</option>
                 @endforeach
@@ -55,7 +67,8 @@
 
         <!-- Deadline -->
         <div class="mb-3">
-            <label for="form.deadline" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deadline</label>
+            <label for="form.deadline"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deadline</label>
             <input type="date" wire:model="form.deadline" id="" class="w-full h-12 rounded-md">
             <div>
                 @error('form.deadline') <span class="text-red-500">{{ $message }}</span> @enderror
@@ -64,7 +77,12 @@
 
         <!-- Deadline -->
         <div class="mb-3">
-            <button type="submit" class="bg-indigo-500 p-2 rounded-lg w-full text-white">Save</button>
+            <button type="submit" class="bg-indigo-500 p-2 rounded-lg w-full text-white">
+                Save
+                <div wire:loading class="w-10 h-10 my-auto">
+                    <i class="fa-solid fa-spinner fa-spin-pulse text-white"></i>
+                </div>
+            </button>
         </div>
 
     </form>

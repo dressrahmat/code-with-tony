@@ -32,5 +32,6 @@
                 {{ $slot }}
             </main>
         </div>
+        <script src="https://kit.fontawesome.com/4b50fceef6.js" crossorigin="anonymous"></script>
     </body>
 </html>
