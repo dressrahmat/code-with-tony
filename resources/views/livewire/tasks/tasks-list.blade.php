@@ -12,4 +12,7 @@
         </div>
     </div>
     @endforeach
+    <div>
+        {{$tasks->links()}}
+    </div>
 </div>
