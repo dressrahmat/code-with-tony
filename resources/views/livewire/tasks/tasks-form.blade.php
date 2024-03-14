@@ -17,7 +17,7 @@
         <div class="mb-3">
             <label for="form.title"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-            <input type="text" wire:model.live="form.title" id="form.title" class="w-full h-12 rounded-md">
+            <input type="text" wire:model="form.title" id="form.title" class="w-full h-12 rounded-md">
             <div>
                 @error('form.title') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
