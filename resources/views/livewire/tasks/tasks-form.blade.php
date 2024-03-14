@@ -3,6 +3,15 @@
         <h5 class="text-4xl text-white">Welcome, <span class="text-purple-400">{{ucfirst(auth()->user()->name)}}</span></h5>
         <p class="text-slate-50">{{ucwords('Ini adalah tugas anda untuk membuat sebuah task')}}</p>
     </div>
+
+    <div>
+        @if (session('success'))
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
+    </div>
+    
     <form wire:submit="save">
         <!-- Title -->
         <div class="mb-3">
