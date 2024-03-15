@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\Url;
 
 class Search extends Component
 {
-    public $search;
+    #[Url(as: 'q')]
+    public $search = '';
     public function render()
     {
         $results = [];
