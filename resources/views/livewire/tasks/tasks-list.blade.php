@@ -12,6 +12,18 @@
             <div>
                 {{$task->description}}
             </div>
+            <div class="mt-2">
+                @foreach (\App\Enums\StatusType::cases() as $status)
+                    <button wire:click="changeStatus({{ $task->id }}, '{{ $status->value }}')" @class([
+                        'inline-flex items-center px-4 py-2 bg-white border rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150',
+                        $status->color() => true
+                        ])
+                        
+                        {{ $status->value == $task->status->value ? 'disabled' : ''}}>
+                        {{ Str::of($status->value)->headline()}}
+                    </button>
+                @endforeach
+            </div>
         </div>
         @endforeach
     </div>
